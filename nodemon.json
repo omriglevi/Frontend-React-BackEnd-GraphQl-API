@@ -2,6 +2,8 @@
     "env":{
         "MONGO_USER":"omriglevi", 
         "MONGO_PASSWORD":"Z8EOrc6Sr5N5kdhI",
-        "MONGO_DB": "Booking-app-react-graphql"
+        "MONGO_DB": "Booking-app-react-graphql" , 
+       "SERVER_URL":" http://localhost:3001/graphql"
 }      
 }
+

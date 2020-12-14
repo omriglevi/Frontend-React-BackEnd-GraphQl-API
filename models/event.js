@@ -21,7 +21,14 @@ const eventSchema=new Schema({
     creator:{
         type:Schema.Types.ObjectId ,   //users id NOT A User Object 
         ref: 'User'
-    }
+    } , 
+    bookings:[
+        {
+            type:Schema.Types.ObjectId  , 
+            ref : 'Booking'
+        }
+       
+]
 
 });
 module.exports=mongoose.model('Event' , eventSchema);
