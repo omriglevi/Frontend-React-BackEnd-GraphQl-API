@@ -29,7 +29,8 @@ module.exports= {
             description:args.eventInput.description,
             price: +args.eventInput.price , 
             date: new Date(args.eventInput.date) , 
-            creator:req.userId 
+            creator:req.userId  ,
+            maxBookings: +args.eventInput.maxBookings
             
         });
 

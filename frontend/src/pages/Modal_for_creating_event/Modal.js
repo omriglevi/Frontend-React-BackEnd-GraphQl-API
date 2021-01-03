@@ -5,15 +5,17 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import BlockIcon from '@material-ui/icons/Block';
 import SportsIcon from '@material-ui/icons/Sports';
 import ClearIcon from '@material-ui/icons/Clear';
-
-
 const  { Modal , Button, Col, Row, Container  } = require("react-bootstrap");
 
-export default function CreateEventModal (){
+
+
+export default function CreateEventModal (props){
   const [isCreated , setIsCreated]=useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    const [maxBookings, setMaxBookings] = useState(3);
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0)
     const [date, setDate] = useState("");
@@ -26,13 +28,13 @@ export default function CreateEventModal (){
 
 
 const creatEventHandler=async (e)=>{
-const event={title, price, date, description } ;
+const event={title, price, date, description ,maxBookings } ;
 const token = context.token;
 
   const requestBody  ={
     query:
     ` mutation{
-      createEvent(eventInput:{title:"${event.title}" , date:"${event.date}" , price:${event.price} , description:"${event.description}" })
+      createEvent(eventInput:{title:"${event.title}" , date:"${event.date}" , price:${event.price} , description:"${event.description}" , maxBookings:${event.maxBookings} })
       {
           _id
           title
@@ -53,6 +55,7 @@ try {
     const reqReturnedData=prettyReq.data.createEvent
     
     if(requestToGql.status===200 || requestToGql.status===201){
+      props.trigger();
       handleClose();
     }
 
@@ -125,6 +128,17 @@ try {
 
 
 
+  <Row>
+  <label>
+    Maximum participators:
+  </label>
+<input value={ maxBookings} id='maxPpl' type="text" name="name" onChange={e=>setMaxBookings(e.target.value)}/>
+{maxBookings>0 ?  <div><CheckCircleIcon color='primary'/> </div>: <div> <BlockIcon color='error'/></div> }
+
+  </Row>
+
+
+
  <Row>
   <label>
     Description: <br/>
@@ -132,6 +146,9 @@ try {
   </label>
   
 </Row>
+
+
+
   </Col>
   </Row>
 </form>

@@ -26,9 +26,13 @@ const eventSchema=new Schema({
         {
             type:Schema.Types.ObjectId  , 
             ref : 'Booking'
-        }
+        } 
        
-]
+],
+
+maxBookings:{
+    type:Number , 
+    required:true}
 
 });
 module.exports=mongoose.model('Event' , eventSchema);

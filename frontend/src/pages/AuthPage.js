@@ -1,7 +1,8 @@
 import React , {useContext, useState } from 'react';
 import './AuthPage.css';
-
+import logo from './logo.png'
 import AuthContext from '../context/auth-context';
+import { Col, Row } from 'react-bootstrap';
 
 
 
@@ -116,13 +117,21 @@ return resData ;
     }
     
 return <form className="auth-form" onSubmit={submitHandler}>
-    
-    <div className="form-control">  <label htmlFor="email"> Email</label>
-        <input value={email}  type="email" id="email"  onChange={e=>setEmail(e.target.value)}/>
+   
+   <Row>
+       <Col> </Col>
+       <Col> <img src={logo}  width="100"
+        height="100" alt='logo' /> </Col>
+
+        <Col></Col>
+ 
+       </Row> 
+    <div className="form-control2">  
+        <input placeholder="Email" value={email}  type="email" id="email"  onChange={e=>setEmail(e.target.value)}/>
     </div>
-    <div className="form-control">
-        <label htmlFor="password"> Password</label>
-        <input value={password} type="password" id="password"  onChange={e=>setPassword(e.target.value)}/>
+    <div className="form-control2">
+       
+        <input placeholder="Password" value={password} type="password" id="password"  onChange={e=>setPassword(e.target.value)}/>
     </div>
     <div className="form-actions">
     <button type="submit"> Submit</button>

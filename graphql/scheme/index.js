@@ -21,6 +21,8 @@ type Event{
     date: String!
     creator:User!
     bookings:[Booking!]
+    maxBookings:Int!
+
 
    
 }
@@ -50,6 +52,7 @@ input EventInput{
     description:String!
     price: Float!
     date: String!
+    maxBookings:Int!
 }
 
 type RootQuery{

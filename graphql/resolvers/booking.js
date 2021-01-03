@@ -50,6 +50,11 @@ bookEvent: async (args,req)=>{
     if(!fetchedEvent || Object.keys(fetchedEvent)===0){
         throw "empty event"
     }
+    if(fetchedEvent.maxBookings <= fetchedEvent.bookings.length)
+    {
+        
+        throw new Error("Sorry but this class is already fully booked")
+    }
     const booking = new Booking({
     event: fetchedEvent ,
     user:req.userId

@@ -6,7 +6,7 @@ import AuthContext from '../../context/auth-context';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import FaceIcon from '@material-ui/icons/Face';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-const { Navbar, Nav, Button } = require("react-bootstrap");
+const { Navbar, Nav, Button, Row, Col } = require("react-bootstrap");
 
 
 
@@ -16,8 +16,7 @@ export default function MainNavBar (props) {
 
 
     const context = useContext(AuthContext) ;
-
-
+   
 
 
 
@@ -31,7 +30,7 @@ export default function MainNavBar (props) {
         width="150"
         height="50"
         className="d-inline-block align-top"
-        alt="React Bootstrap logo"
+        alt=" logo"
       />   </Navbar.Brand>
       
 
@@ -40,7 +39,7 @@ export default function MainNavBar (props) {
     
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
-      { !context.token && <Nav.Link href="/auth"> <AccountCircleIcon/> Authenticate</Nav.Link>  }
+      { !context.token && <Nav.Link  href="/auth"> <AccountCircleIcon/> Authenticate</Nav.Link>  }
       <Nav.Link href="/events"> Events</Nav.Link>
       { context.token &&   <Nav.Link to="/bookings"> Bookings</Nav.Link> }
 
@@ -48,12 +47,18 @@ export default function MainNavBar (props) {
       </Nav>
  
        
-        { context.token &&      <Nav>  <Nav.Link href='/' onClick={context.logout} > <ExitToAppIcon/> Logout </Nav.Link> 
-         <Nav.Link href='/userinfo'> <FaceIcon/> Name </Nav.Link>    </Nav>
-         }
+       
        
    
     </Navbar.Collapse>
-    
+    { context.token && <Row> 
+      <Nav> <Nav.Link href='/userinfo'> <Button>   <FaceIcon/>   </Button> </Nav.Link> </Nav>
+       
+   
+    <Nav>  <Nav.Link  href='/' onClick={context.logout} > <Button> <ExitToAppIcon/></Button>  </Nav.Link> 
+             </Nav>
+           
+    </Row>  
+         }
   </Navbar>)
 }

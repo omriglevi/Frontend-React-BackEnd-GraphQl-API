@@ -2,21 +2,25 @@
     width: 25rem;
     max-width:80% ;
     margin: 5rem auto;
+    padding: 5rem 5rem;
+    
+    border:solid thin;
+    border-radius: 15px;
 }
 
-.form-control lable{
+.form-control2 lable{
     margin-bottom: .5rem;
 }
 
 
-.form-control 
+.form-control2 
 {
 margin-bottom: 1rem;
 }
 
 
-.form-control label,
-.form-control input
+.form-control2 label,
+.form-control2 input
 {
 width: 100%;
 display: block ; 
@@ -38,3 +42,4 @@ display: block ;
 .form-actions button:active{
 background-color: rgb(221, 88, 133) ;
 }
+
